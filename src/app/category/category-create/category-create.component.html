@@ -1,0 +1,22 @@
+<form [formGroup]="categoryForm" (ngSubmit)="createCategory()">
+  <h2>Thêm mới danh mục sản phẩm</h2>
+  <br>
+  <div class="mb-3">
+    <label for="name" class="form-label">Tên danh mục sản phẩm</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="categoryForm.controls.name?.errors?.required && categoryForm.controls.name?.touched">
+    Không được để trống!
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="categoryForm.controls.name?.errors?.minlength && categoryForm.controls.name?.touched">
+    Tối thiểu 3 ký tự!
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="categoryForm.controls.name?.errors?.maxlength && categoryForm.controls.name?.touched">
+    Tối đa 15 ký tự!
+  </div>
+  <button type="submit" class="btn btn-success">Tạo mới</button>
+</form>
+

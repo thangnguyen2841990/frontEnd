@@ -1,0 +1,23 @@
+<a routerLink="/category/create">
+  <button class="btn btn-primary"><i class="fa-solid fa-plus"></i></button></a>
+<br>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">STT</th>
+    <th scope="col">Tên danh mục</th>
+    <th scope="col" colspan="2">Thao tác</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let category of categories; index as i">
+    <th scope="row">{{i+1}}</th>
+    <td>{{category.name}}</td>
+    <td><a [routerLink]="['/category/edit', category.id]" >
+      <button class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
+    <td><a [routerLink]="['/category/delete', category.id]" >
+      <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a></td>
+  </tr>
+
+  </tbody>
+</table>

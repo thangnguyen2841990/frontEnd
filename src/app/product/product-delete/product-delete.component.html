@@ -1,0 +1,65 @@
+<form [formGroup]="productForm" (ngSubmit)="deleteProduct(id)">
+  <h2>Xóa sản phẩm</h2>
+  <br>
+  <div class="mb-3">
+    <label for="disabledSelect" class="form-label">Loại sản phẩm</label>
+    <select id="disabledSelect" disabled class="form-select" formControlName="categoryId">
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Ảnh sản phẩm</label>
+    <img [src]="imageUrl" style="width: 150px; height: auto">
+  </div>
+  <div class="mb-3">
+    <label for="name" class="form-label">Tên sản phẩm</label>
+    <input type="text" disabled class="form-control" id="name" formControlName="name">
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="productForm.controls.name?.errors?.required && productForm.controls.name?.touched">
+    Không được để trống!
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="productForm.controls.name?.errors && productForm.controls.name?.touched">
+    Tối thiểu 3 ký tự!
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Giá sản phẩm</label>
+    <input type="number" disabled class="form-control" id="price" formControlName="price">
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="productForm.controls.price?.errors?.required && productForm.controls.price?.touched">
+    Không được để trống!
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="productForm.controls.price?.errors && productForm.controls.price?.touched">
+    Giá tối thiểu là 1000(VNĐ)!
+  </div>
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Số lượng sản phẩm</label>
+    <input type="number" disabled class="form-control" id="quantity" formControlName="quantity">
+  </div>
+
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="productForm.controls.quantity?.errors?.required && productForm.controls.quantity?.touched">
+    Không được để trống!
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="productForm.controls.quantity?.errors && productForm.controls.quantity?.touched">
+    Số lượng tối thiểu là 1!
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Mô tả sản phẩm</label>
+    <input type="text" disabled class="form-control" id="description" formControlName="description">
+  </div>
+
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="productForm.controls.description?.errors?.required && productForm.controls.description?.touched">
+    Không được để trống!
+  </div>
+  <div class="col alert alert-danger" role="alert"
+       *ngIf="productForm.controls.description?.errors && productForm.controls.description?.touched">
+    Tối thiểu 6 ký tự!
+  </div>
+  <button type="submit" class="btn btn-danger">Xóa</button>
+</form>

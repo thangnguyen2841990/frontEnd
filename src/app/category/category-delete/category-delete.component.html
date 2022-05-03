@@ -1,0 +1,9 @@
+<form [formGroup]="categoryForm" (ngSubmit)="deleteCategory(id)">
+  <h2>Xóa danh mục sản phẩm</h2>
+  <br>
+  <div class="mb-3">
+    <label for="name" class="form-label">Tên danh mục sản phẩm</label>
+    <input type="text" class="form-control" id="name" formControlName="name" disabled>
+  </div>
+  <button type="submit" class="btn btn-danger">Xác nhận</button>
+</form>

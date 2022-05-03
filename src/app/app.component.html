@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/product/list">Danh sách sản phẩm</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/category/list">Danh mục sản phẩm</a>
+        </li>
+      </ul>
+
+
+      <a class="nav-link active btn" style="float: right; color: black" aria-current="page" (click)="logout()">Đăng xuất</a>
+    </div>
+  </div>
+</nav>
+<br>
+<router-outlet></router-outlet>

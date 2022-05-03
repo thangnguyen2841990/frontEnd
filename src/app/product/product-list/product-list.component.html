@@ -1,0 +1,75 @@
+<a routerLink="/product/create">
+  <button class="btn btn-primary"><i class="fa-solid fa-plus"></i></button></a>
+<br>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">STT</th>
+    <th scope="col">Ảnh sản phẩm</th>
+    <th scope="col">Tên sản phẩm</th>
+    <th scope="col">Loại sản phẩm</th>
+    <th scope="col">Giá</th>
+    <th scope="col">Số lượng</th>
+    <th scope="col">Mô tả</th>
+    <th scope="col" colspan="2"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products; index as i">
+    <th scope="row">{{i+1}}</th>
+    <td><img *ngFor="let img of product.images" src="http://localhost:8080/image/{{img.image}}" (click)="openModalWithClass(template, img.id)" style="width: 100px; height: auto; border-radius: 50%"></td>
+    <td>{{product.name}}</td>
+    <td>{{product.category?.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.quantity}}</td>
+    <td>{{product.description}}</td>
+    <td><a [routerLink]="['/product/edit', product.id]" >
+      <button class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
+    <td><a [routerLink]="['/product/delete', product.id]" >
+      <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a></td>
+  </tr>
+
+  </tbody>
+</table>
+<!--    phân trang-->
+<div class="mt-3">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination d-flex justify-content-md-end justify-content-center">
+      <li [hidden]="currentPage == 1" class="page-item"><a class="page-link" (click)="first()" >Đầu</a></li>
+      <li [hidden]="currentPage == 1" class="page-item"><a class="page-link" (click)="previous()" >Trang trước</a></li>
+      <li class="page-item col-md-1 col-2  px-0">
+        <div class="input-group">
+          <input type="number" min="1"  class="form-control text-right rounded-0"
+                 value="{{currentPage}}" aria-label="Username"
+                 aria-describedby="basic-addon1" disabled
+          >
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">{{totalPagination}}</span>
+          </div>
+        </div>
+      </li>
+      <li class="page-item">
+        <button class="btn btn-primary rounded-0" >Đi</button>
+      </li>
+      <li [hidden]="currentPage == totalPagination" class="page-item"><a class="page-link" (click)="next()" >Trang kế</a></li>
+      <li [hidden]="currentPage == totalPagination" class="page-item"><a class="page-link" (click)="last()" >Cuối</a></li>
+    </ul>
+  </nav>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ảnh sản phẩm</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <img src="http://localhost:8080/image/{{imageUrl}}" style="width: 700px; height: auto" >
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>
